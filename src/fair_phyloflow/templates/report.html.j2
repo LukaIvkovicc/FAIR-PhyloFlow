@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FAIR PhyloFlow report</title>
+    <style>
+      :root { color-scheme: light; --ink: #18212f; --muted: #5c6675; --line: #d8dee8; --band: #f6f8fb; --accent: #0f766e; }
+      * { box-sizing: border-box; }
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 0; color: var(--ink); line-height: 1.45; background: #fff; }
+      header { padding: 2rem clamp(1rem, 4vw, 3rem); border-bottom: 1px solid var(--line); background: var(--band); }
+      main { max-width: 1120px; margin: 0 auto; padding: 1.5rem clamp(1rem, 3vw, 2rem) 3rem; }
+      h1 { margin: 0 0 .75rem; font-size: clamp(1.75rem, 3vw, 2.5rem); }
+      h2 { margin: 0 0 .75rem; font-size: 1.15rem; color: var(--accent); }
+      section { padding: 1.25rem 0; border-bottom: 1px solid var(--line); }
+      ul { margin: 0; padding-left: 1.25rem; }
+      li { margin: .25rem 0; }
+      table { width: 100%; border-collapse: collapse; font-size: .92rem; margin-top: .75rem; }
+      th, td { border: 1px solid var(--line); padding: .5rem; text-align: left; vertical-align: top; }
+      th { background: var(--band); }
+      .meta { color: var(--muted); }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>FAIR PhyloFlow report</h1>
+      <div class="meta">
+        <div><strong>Project:</strong> {{ project_name }}</div>
+        <div><strong>Generated:</strong> {{ generated_at }}</div>
+      </div>
+    </header>
+    <main>
+      {{ report_html | safe }}
+    </main>
+  </body>
+</html>

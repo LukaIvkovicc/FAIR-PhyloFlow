@@ -1,0 +1,12 @@
+services:
+  fair-phyloflow:
+    build: .
+    init: true
+    ports:
+      - "8501:8501"
+    volumes:
+      - fair-phyloflow-results:/app/results
+    restart: unless-stopped
+
+volumes:
+  fair-phyloflow-results:

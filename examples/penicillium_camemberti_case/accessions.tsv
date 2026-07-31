@@ -1,0 +1,7 @@
+accession	taxon	strain	resource	data_type	publication	included	notes
+GCA_000513335.1	Penicillium_camemberti	FM 013	NCBI Assembly	genome_assembly	Almeida et al. 2014 / reference genome	true	Earlier FM 013 assembly; linked in Ensembl Fungi and UniProt resources
+CBVV000000000.1	Penicillium_camemberti	FM 013	GenBank WGS	wgs_project	Almeida et al. 2014 / ergot alkaloid cluster reuse	true	WGS project cited for P. camemberti FM 013
+GCA_014839975.1	Penicillium_camemberti	FM 013	NCBI Assembly	genome_assembly	Ropars et al. 2020	true	PacBio polished FM 013 assembly; assembly name PcamFM013r2_polished
+JACXYV000000000.1	Penicillium_camemberti	FM 013	GenBank WGS	wgs_project	Ropars et al. 2020	true	WGS project for Ropars-linked polished assembly
+CBXO000000000.1	Penicillium_biforme	FM 169	GenBank WGS	wgs_project	Robinson et al. 2018 ergot alkaloid comparison	true	WGS project cited for P. biforme FM 169
+JASJSW000000000	Penicillium_biforme	ITEM 15300	GenBank WGS	wgs_project	IMA Fungus genome resource	true	Public P. biforme WGS accession from ITEM 15300

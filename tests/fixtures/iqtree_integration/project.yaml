@@ -1,0 +1,32 @@
+project:
+  name: ci_iqtree_contract
+  description: Tiny synthetic fixture for the real IQ-TREE CI contract
+  outdir: ../../../results/ci_iqtree
+
+domain_pack: phylogenomics
+domain_profile: generic
+
+question:
+  type: conflict_investigation
+  conflict_sensitive: true
+  needs_concordance: true
+
+input:
+  mode: locus_alignments
+  data_type: locus_alignments
+  alignments_dir: alignments
+  taxa_table: taxa.tsv
+  outgroup: taxon_d
+
+analysis:
+  route: gene_tree
+  require_concordance: true
+  threads: 1
+  random_seed: 1729
+  bootstrap_replicates: 0
+  concordance_quartets: 10
+  min_taxa_per_locus: 4
+
+execution:
+  iqtree_bin: iqtree2
+  command_timeout_seconds: 300

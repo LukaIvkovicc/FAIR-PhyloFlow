@@ -1,0 +1,33 @@
+name: Feature request
+description: Propose a workflow, usability, or scientific-method improvement
+title: "[Feature]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What research or workflow problem should be solved?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: Describe inputs, outputs, decisions, and failure states.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Scientific basis
+      description: Add methods, tools, references, or validation data when relevant.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope check
+      options:
+        - label: This preserves explicit decisions and provenance.
+          required: true
+        - label: This does not imply unsupported biological conclusions.
+          required: true

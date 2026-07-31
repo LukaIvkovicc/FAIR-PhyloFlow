@@ -1,0 +1,36 @@
+.venv/
+.venv-wsl/
+.agents/
+.codex/
+__pycache__/
+*.pyc
+.pytest_cache/
+.pytest_tmp/
+dist/
+build/
+*.egg-info/
+debug.log
+*.log
+.coverage
+coverage.xml
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local configuration and credentials must never enter the public repository.
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+
+results/
+
+# Local/private working documents are not part of the public software record.
+*.docx
+rp-paper/

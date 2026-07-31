@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "FAIR PhyloFlow"
+abstract: >-
+  A decision-aware phylogenomics workflow with transparent provenance,
+  reproducible execution, and reusable research outputs.
+type: software
+authors:
+  - family-names: "Ivkovic"
+    given-names: "Luka"
+version: 0.1.0
+license: MIT
+repository-code: "https://github.com/LukaIvkovicc/FAIR-PhyloFlow"
+url: "https://github.com/LukaIvkovicc/FAIR-PhyloFlow"
+keywords:
+  - FAIR data
+  - phylogenetics
+  - phylogenomics
+  - reproducibility
+  - scientific workflows

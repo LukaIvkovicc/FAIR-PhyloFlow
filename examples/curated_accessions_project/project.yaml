@@ -1,0 +1,33 @@
+project:
+  name: demo_curated_accessions
+  description: "FAIR PhyloFlow phylogenomics demo (curated-accessions-first; Stage 2)."
+  outdir: ../../results/curated_accessions_project
+
+domain_pack: phylogenomics
+
+question:
+  type: broad_relationship_inference
+  conflict_sensitive: false
+  needs_concordance: false
+
+input:
+  mode: curated_accessions
+  data_type: accessions
+  accessions_table: accessions.tsv
+  outgroup: Penicillium_outgroup
+
+analysis:
+  route: auto
+  allow_concatenation: true
+  require_concordance: false
+  large_locus_threshold: 500
+  threads: AUTO
+
+execution:
+  execute_when_available: false
+  iqtree_bin: iqtree2
+
+fair:
+  capture_provenance: true
+  create_methods_report: true
+  package_outputs: true

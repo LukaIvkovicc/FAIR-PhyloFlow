@@ -1,0 +1,45 @@
+project:
+  name: penicillium_camemberti_validation_scaffold
+  description: "FAIR PhyloFlow validation with candidate accession provenance and synthetic controls."
+  outdir: ../../results/penicillium_camemberti_case
+
+domain_pack: phylogenomics
+domain_profile: fungi
+
+question:
+  type: species_delimitation
+  conflict_sensitive: true
+  needs_concordance: true
+
+input:
+  mode: locus_alignments
+  data_type: locus_alignments
+  accessions_table: accessions.tsv
+  alignments_dir: alignments
+  taxa_table: taxa.tsv
+  outgroup: Penicillium_fuscoglaucum
+
+analysis:
+  route: auto
+  allow_concatenation: true
+  require_concordance: true
+  large_locus_threshold: 500
+  min_alignment_length: 10
+  max_mean_missing_fraction: 0.5
+  threads: AUTO
+
+execution:
+  execute_when_available: false
+  iqtree_bin: iqtree2
+  raxmlng_bin: raxml-ng
+  pargenes_bin: pargenes.py
+  pargenes_cores: 2
+  busco_bin: busco
+  busco_cores: 1
+  astral_bin: astral
+  bucky_bin: bucky
+
+fair:
+  capture_provenance: true
+  create_methods_report: true
+  package_outputs: true

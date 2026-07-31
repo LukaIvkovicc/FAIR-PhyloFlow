@@ -1,0 +1,34 @@
+project:
+  name: demo_penici_like
+  description: "FAIR PhyloFlow phylogenomics demo (alignments-first)."
+  outdir: ../../results/demo_project
+
+domain_pack: phylogenomics
+
+question:
+  type: species_delimitation
+  conflict_sensitive: true
+  needs_concordance: true
+
+input:
+  mode: locus_alignments
+  data_type: locus_alignments
+  alignments_dir: alignments
+  taxa_table: taxa.tsv
+  outgroup: Penicillium_outgroup
+
+analysis:
+  route: auto
+  allow_concatenation: true
+  require_concordance: true
+  large_locus_threshold: 500
+  threads: AUTO
+
+execution:
+  execute_when_available: true
+  iqtree_bin: iqtree2
+
+fair:
+  capture_provenance: true
+  create_methods_report: true
+  package_outputs: true

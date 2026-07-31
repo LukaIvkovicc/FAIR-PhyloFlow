@@ -1,0 +1,11 @@
+name: fair-phyloflow
+channels:
+  - conda-forge
+  - bioconda
+channel_priority: strict
+dependencies:
+  - python=3.12
+  - iqtree=2.4.0
+  - pip
+  - pip:
+      - -e .[dev]
