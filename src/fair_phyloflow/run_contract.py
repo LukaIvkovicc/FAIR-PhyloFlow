@@ -376,8 +376,14 @@ def validate_tree(tree_path: Path, alignment_path: Path | None = None) -> list[s
 def _validate_tabular_output(path: Path) -> list[str]:
     if not path.is_file() or path.stat().st_size == 0:
         return [f"Missing or empty concordance output: {path}"]
-    first_line = path.read_text(encoding="utf-8", errors="replace").splitlines()[0]
-    if not any(name in first_line for name in ("gCF", "sCF", "ID", "Branch")):
+    lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+    recognized = ("gcf", "scf", "id", "branch")
+    has_header = any(
+        any(name in line.lower() for name in recognized)
+        for line in lines
+        if line.strip() and not line.lstrip().startswith("#")
+    )
+    if not has_header:
         return [f"Concordance table has no recognized columns: {path}"]
     return []
 

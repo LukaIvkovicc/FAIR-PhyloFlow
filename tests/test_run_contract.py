@@ -9,6 +9,7 @@ from fair_phyloflow.config import WorkflowConfig
 from fair_phyloflow.run_contract import (
     TaskSpec,
     _normalize_concordance,
+    _validate_tabular_output,
     build_run_plan,
     execute_run_plan,
     validate_iqtree_version,
@@ -187,3 +188,9 @@ def test_concordance_normalization_rejects_mismatched_branch_ids(tmp_path: Path)
     code, message = _normalize_concordance(task)
     assert code == 5
     assert "same branch IDs" in message
+
+
+def test_validate_tabular_output_accepts_commented_header(tmp_path: Path) -> None:
+    table = tmp_path / "gcf.cf.stat"
+    table.write_text("# IQ-TREE concordance summary\nID\tgCF\tgCF_N\n1\t75\t10\n", encoding="utf-8")
+    assert _validate_tabular_output(table) == []
