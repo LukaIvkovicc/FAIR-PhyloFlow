@@ -9,6 +9,7 @@ from fair_phyloflow.config import WorkflowConfig
 from fair_phyloflow.run_contract import (
     TaskSpec,
     _normalize_concordance,
+    _validate_tabular_output,
     build_run_plan,
     execute_run_plan,
     validate_iqtree_version,
@@ -73,6 +74,8 @@ def test_build_plan_has_complete_route_and_stable_fingerprint(tmp_path: Path) ->
     assert kinds.count("iqtree_gene_tree") == 3
     assert kinds[-4:] == ["combine_gene_trees", "iqtree_gcf", "iqtree_scf", "normalize_concordance"]
     assert len(plan.fingerprint) == 64
+    scf = next(task for task in plan.tasks if task.kind == "iqtree_scf")
+    assert scf.argv[scf.argv.index("-T") + 1] == "1"
 
     plan_path = write_run_plan(plan, Path(plan.run_dir) / "run-plan.json")
     first = plan_path.read_text(encoding="utf-8")
@@ -187,3 +190,22 @@ def test_concordance_normalization_rejects_mismatched_branch_ids(tmp_path: Path)
     code, message = _normalize_concordance(task)
     assert code == 5
     assert "same branch IDs" in message
+
+
+def test_iqtree_commented_concordance_table_is_validated_and_normalized(tmp_path: Path) -> None:
+    gcf = tmp_path / "gcf.cf.stat"
+    scf = tmp_path / "scf.cf.stat"
+    gcf.write_text("# Concordance factor statistics\n# ID: Branch ID\nID\tgCF\n1\t75\n", encoding="utf-8")
+    scf.write_text("# Concordance factor statistics\n# ID: Branch ID\nID\tsCF\n1\t70\n", encoding="utf-8")
+    assert _validate_tabular_output(gcf) == []
+    task = TaskSpec(
+        task_id="normalize",
+        kind="normalize_concordance",
+        argv=[],
+        cwd=str(tmp_path),
+        inputs=[str(gcf), str(scf)],
+        expected_outputs=[str(tmp_path / "summary.tsv")],
+    )
+    code, _message = _normalize_concordance(task)
+    assert code == 0
+    assert (tmp_path / "summary.tsv").read_text(encoding="utf-8") == "ID\tgCF\tsCF\n1\t75\t70\n"

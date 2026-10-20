@@ -16,6 +16,19 @@ tool." Users must decide which data are suitable, which route fits the
 biological question, which loci are usable, how support and concordance should
 be interpreted, and how the whole analysis can be documented for reuse.
 
+## Workflow Overview
+
+![FAIR PhyloFlow overview: question and curated inputs, readiness and locus selection, route choice, validated IQ-TREE execution, and reusable evidence, with provenance throughout and future capabilities distinguished.](docs/figures/fair-phyloflow-overview-v2.svg)
+
+The workflow links scientific decisions to their supporting evidence. The inset
+shows the implemented prepared-alignment route; the dashed panel distinguishes
+command/guidance support and future automation.
+
+[Full-size SVG](docs/figures/fair-phyloflow-overview-v2.svg) ·
+[PNG](docs/figures/fair-phyloflow-overview-v2.png) ·
+[Vector PDF](docs/figures/fair-phyloflow-overview-v2.pdf) ·
+[Figure caption and implementation references](docs/figures/README.md)
+
 ## Architecture At A Glance
 
 Workflow and evidence layer:

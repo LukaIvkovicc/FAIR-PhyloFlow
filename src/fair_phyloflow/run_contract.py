@@ -30,7 +30,7 @@ TaskStatus = Literal[
 ]
 
 IQTREE_VERSION_SPEC = ">=2.2.2,<3"
-RUN_PLAN_SCHEMA_VERSION = "1.1"
+RUN_PLAN_SCHEMA_VERSION = "1.2"
 
 
 @dataclass(frozen=True)
@@ -264,6 +264,9 @@ def build_run_plan(
     )
 
     scf_prefix = concordance_dir / "scf"
+    # IQ-TREE 2.4 rejects automatic thread detection for concordance-factor
+    # analysis, even though it accepts AUTO for tree inference.
+    concordance_threads = "1" if _threads(cfg).upper() == "AUTO" else _threads(cfg)
     scf = TaskSpec(
         task_id="site_concordance",
         kind="iqtree_scf",
@@ -275,7 +278,10 @@ def build_run_plan(
             str(concatenated_alignment),
             "--scf",
             str(cfg.analysis.concordance_quartets),
-            *common,
+            "-T",
+            concordance_threads,
+            "-seed",
+            str(cfg.analysis.random_seed),
             "--prefix",
             str(scf_prefix),
         ],
@@ -376,8 +382,12 @@ def validate_tree(tree_path: Path, alignment_path: Path | None = None) -> list[s
 def _validate_tabular_output(path: Path) -> list[str]:
     if not path.is_file() or path.stat().st_size == 0:
         return [f"Missing or empty concordance output: {path}"]
-    first_line = path.read_text(encoding="utf-8", errors="replace").splitlines()[0]
-    if not any(name in first_line for name in ("gCF", "sCF", "ID", "Branch")):
+    data_lines = [
+        line
+        for line in path.read_text(encoding="utf-8", errors="replace").splitlines()
+        if line.strip() and not line.lstrip().startswith("#")
+    ]
+    if not data_lines or not any(name in data_lines[0] for name in ("gCF", "sCF", "ID", "Branch")):
         return [f"Concordance table has no recognized columns: {path}"]
     return []
 
@@ -417,8 +427,8 @@ def _combine_gene_trees(task: TaskSpec) -> tuple[int, str]:
 
 def _normalize_concordance(task: TaskSpec) -> tuple[int, str]:
     try:
-        gcf = pd.read_csv(task.inputs[0], sep="\t")
-        scf = pd.read_csv(task.inputs[1], sep="\t")
+        gcf = pd.read_csv(task.inputs[0], sep="\t", comment="#")
+        scf = pd.read_csv(task.inputs[1], sep="\t", comment="#")
     except (OSError, pd.errors.ParserError) as exc:
         return 5, f"Could not parse concordance statistics: {exc}"
     if "ID" not in gcf.columns or "ID" not in scf.columns:
