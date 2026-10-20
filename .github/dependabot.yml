@@ -16,6 +16,9 @@ updates:
     directory: /
     schedule:
       interval: monthly
+    ignore:
+      - dependency-name: python
+        versions: [">=3.15"]
   - package-ecosystem: conda
     directory: /
     schedule:
@@ -23,4 +26,6 @@ updates:
     # The execution contract currently supports IQ-TREE 2 only.
     ignore:
       - dependency-name: iqtree
-        update-types: ["version-update:semver-major"]
+        versions: [">=3"]
+      - dependency-name: python
+        versions: [">=3.15"]
