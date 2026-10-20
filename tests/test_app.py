@@ -7,13 +7,15 @@ from unittest.mock import patch
 import pytest
 from streamlit.testing.v1 import AppTest
 
+APP_PATH = Path(__file__).resolve().parents[1] / "app" / "streamlit_app.py"
+
 
 @pytest.mark.parametrize(
     ("button", "command"),
     [("Check", "check"), ("Plan", "plan"), ("Run", "run"), ("Report", "report")],
 )
 def test_app_buttons_use_selected_config_and_report_success(button: str, command: str) -> None:
-    app = AppTest.from_file(str(Path("app/streamlit_app.py"))).run()
+    app = AppTest.from_file(str(APP_PATH)).run()
     assert not app.exception
     app.text_input[0].set_value("custom/project.yaml").run()
     result = subprocess.CompletedProcess([], 0, stdout="Generated output", stderr="")
@@ -29,7 +31,7 @@ def test_app_buttons_use_selected_config_and_report_success(button: str, command
 
 
 def test_app_shows_command_failure_and_diagnostics() -> None:
-    app = AppTest.from_file("app/streamlit_app.py").run()
+    app = AppTest.from_file(str(APP_PATH)).run()
     result = subprocess.CompletedProcess([], 2, stdout="", stderr="Invalid configuration")
     with patch("subprocess.run", return_value=result):
         app.button[0].click().run()
