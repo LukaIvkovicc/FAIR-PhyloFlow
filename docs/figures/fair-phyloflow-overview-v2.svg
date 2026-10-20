@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1440" viewBox="0 0 1800 1440" role="img" aria-labelledby="title desc">
+<title id="title">FAIR PhyloFlow — scientific decisions connected to reusable evidence</title>
+<desc id="desc">A configuration-driven phylogenomics workflow. Researchers start with curated data, frame questions, and register inputs, check readiness and select loci, then choose routes with explicit rationale. The researcher invokes the fixed IQ-TREE 2 execution route on prepared alignments; route recommendations do not automatically dispatch execution. PhyloFlow checks and orchestrates; IQ-TREE infers trees and calculates concordance. Planning-only projects bypass new inference and proceed to reporting, which may include existing results. Researchers interpret support and concordance as distinct evidence, and receive reports and verifiable FAIR-oriented packages. Provenance and execution integrity span the workflow. Future automation is labeled separately.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#527b7c"/></marker></defs>
+<style>text{font-family:DejaVu Sans,sans-serif;fill:#18333c}.title{font-size:52px;font-weight:700}.sub{font-size:23px;fill:#49636a}.label{font-size:16px;font-weight:700;letter-spacing:1.5px;fill:#177b6b}.head{font-size:26px;font-weight:700}.stage{font-size:23px;font-weight:700;letter-spacing:0.7px;fill:#177b6b}.prompt{font-size:23px;font-weight:700}.body{font-size:20px}.small{font-size:17px;fill:#49636a}.node{font-size:19px;font-weight:700}.white{fill:#fff}.light{fill:#d3e9e5}</style>
+<rect width="1800" height="1440" fill="#f5f7f4"/><rect width="1800" height="12" fill="#147d70"/>
+<text x="60" y="57" class="label">DECISION-AWARE · REPRODUCIBLE · TRACEABLE</text>
+<text x="60" y="118" class="title">FAIR PhyloFlow</text>
+<text x="60" y="160" class="sub">A configuration-driven phylogenomics workflow: from curated inputs to reusable evidence</text>
+<rect x="1420" y="50" width="320" height="50" rx="16" fill="#e5eeea" stroke="#e5eeea"/>
+<text x="1440" y="82" class="small">v0.1.0 / Research prototype</text>
+<rect x="60" y="192" width="1680" height="57" rx="16" fill="#e5eeea" stroke="#e5eeea"/>
+<text x="82" y="228" class="label">WHY IT MATTERS</text>
+<text x="280" y="228" class="body">A strongly supported tree can conceal locus conflict. Data choices, methods, and evidence need to stay traceable.</text>
+<rect x="60" y="280" width="470" height="290" rx="16" fill="#fff" stroke="#d4dfdc"/>
+<text x="84" y="317" class="stage">01 / FRAME + REGISTER</text>
+<text x="84" y="357" class="prompt">What are you asking?</text>
+<text x="84" y="395" class="body">Relationships · species boundaries · conflict</text>
+<text x="84" y="424" class="body">Question, taxa, outgroup → project.yaml</text>
+<text x="84" y="467" class="small">Prepared nucleotide alignments → inference</text>
+<text x="84" y="496" class="small">Accession metadata → registry + readiness</text>
+<text x="84" y="539" class="small">Researcher uses curated data to frame the study.</text>
+<path d="M531 425H557" fill="none" stroke="#527b7c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="560" y="280" width="490" height="290" rx="16" fill="#fff" stroke="#d4dfdc"/>
+<text x="584" y="317" class="stage">02 / CHECK + SELECT</text>
+<text x="584" y="357" class="prompt" style="font-size:22px">Do inputs pass readiness checks?</text>
+<text x="584" y="395" class="body">Check files, taxa, outgroup, and alignments</text>
+<text x="584" y="424" class="body">Measure taxon count, length, missingness</text>
+<rect x="584" y="446" width="442" height="67" rx="16" fill="#eaf4ef" stroke="#c5dcd3"/>
+<text x="600" y="473" class="node">Selected loci → tree inputs</text>
+<text x="600" y="499" class="small">Excluded loci + reasons → report</text>
+<text x="584" y="539" class="small">PhyloFlow applies configured checks and thresholds.</text>
+<path d="M1051 425H1077" fill="none" stroke="#527b7c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1080" y="280" width="660" height="290" rx="16" fill="#fff" stroke="#d4dfdc"/>
+<text x="1104" y="317" class="stage">03 / RECOMMEND + EXPLAIN</text>
+<text x="1104" y="357" class="prompt">Which route fits the question?</text>
+<text x="1104" y="397" class="body">Broad relationships → concatenation</text>
+<text x="1104" y="431" class="body">Species-boundary / conflict questions → gene-tree route</text>
+<text x="1104" y="465" class="body">Species-tree / reticulation routes → guidance today</text>
+<text x="1104" y="506" class="small">Question + data + profile + preferences → rationale</text>
+<text x="1104" y="539" class="small">Overrides, warnings, and tool support remain explicit.</text>
+<path d="M1120 570V610H600V670" fill="none" stroke="#527b7c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="615" y="640" class="small">User invokes execute: fixed IQ-TREE 2 route</text>
+<path d="M1580 570V670" fill="none" stroke="#527b7c" stroke-width="2.5" marker-end="url(#arrow)" stroke-dasharray="7 5"/>
+<rect x="1200" y="594" width="535" height="48" rx="16" fill="#f5f7f4" stroke="#f5f7f4"/>
+<text x="1220" y="613" class="small">Planning / registration only → report directly</text>
+<text x="1220" y="637" class="small">No new inference; existing results may be reported</text>
+<rect x="60" y="670" width="1080" height="403" rx="16" fill="#fff" stroke="#d4dfdc"/>
+<text x="84" y="708" class="stage">04 / EXECUTE + VALIDATE</text>
+<text x="84" y="747" class="prompt">Prepared alignments + compatible IQ-TREE 2</text>
+<rect x="84" y="806" width="180" height="98" rx="16" fill="#eaf4ef" stroke="#bbd7cd"/>
+<rect x="304" y="785" width="233" height="91" rx="16" fill="#eaf4ef" stroke="#bbd7cd"/>
+<rect x="304" y="920" width="233" height="91" rx="16" fill="#eaf4ef" stroke="#bbd7cd"/>
+<rect x="577" y="785" width="231" height="91" rx="16" fill="#eaf4ef" stroke="#bbd7cd"/>
+<rect x="848" y="806" width="266" height="205" rx="16" fill="#eaf4ef" stroke="#bbd7cd"/>
+<text x="100" y="842" class="node">Selected loci</text>
+<text x="100" y="873" class="small">Staged FASTAs</text>
+<text x="320" y="819" class="node">Concatenate</text>
+<text x="320" y="850" class="small">Combined alignment</text>
+<text x="320" y="954" class="node">Per-locus inference</text>
+<text x="320" y="985" class="small">Verified gene trees</text>
+<text x="593" y="819" class="node">Infer ML tree</text>
+<text x="593" y="850" class="small">Reference topology</text>
+<text x="864" y="842" class="node">Concordance</text>
+<text x="864" y="871" class="small">Gene concordance (gCF)</text>
+<text x="864" y="893" class="small">Reference + gene trees</text>
+<text x="864" y="924" class="small">Site concordance (sCF)</text>
+<text x="864" y="946" class="small">Reference + alignment</text>
+<text x="864" y="977" class="small">Join gCF / sCF by branch ID</text>
+<text x="864" y="1000" class="small">Keep support separate</text>
+<path d="M264 840H284V830H304" fill="none" stroke="#527b7c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M284 840V965H304" fill="none" stroke="#527b7c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M537 830H577" fill="none" stroke="#527b7c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M808 830H848" fill="none" stroke="#527b7c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<path d="M420 876V901H848" fill="none" stroke="#527b7c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="565" y="894" class="small">Alignment → sCF</text>
+<path d="M537 965H848" fill="none" stroke="#527b7c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<text x="84" y="1034" class="small">IQ-TREE infers trees and computes concordance; PhyloFlow orchestrates and validates.</text>
+<text x="84" y="1058" class="small">Required artifacts must pass validation before a task is verified.</text>
+<path d="M1141 861H1167" fill="none" stroke="#527b7c" stroke-width="2.5" marker-end="url(#arrow)"/>
+<rect x="1170" y="670" width="570" height="403" rx="16" fill="#fff" stroke="#d4dfdc"/>
+<text x="1194" y="708" class="stage">05 / INTERPRET + SHARE</text>
+<text x="1194" y="747" class="prompt">What does the evidence support?</text>
+<text x="1194" y="787" class="body">When results exist, assess agreement, conflict,</text>
+<text x="1194" y="816" class="body">and unresolved relationships.</text>
+<text x="1194" y="855" class="node">Branch support ≠ gene / site concordance</text>
+<text x="1194" y="886" class="small">Biological judgments remain with the researcher.</text>
+<path d="M1194 910H1716" stroke="#d4dfdc"/>
+<text x="1194" y="944" class="node">Report + reusable FAIR-oriented package</text>
+<text x="1194" y="976" class="small">Decisions, provenance, and available results</text>
+<text x="1194" y="1006" class="small">Human-readable reports + machine-readable records</text>
+<text x="1194" y="1048" class="small">verify-package → inventory and checksum checks</text>
+<rect x="60" y="1097" width="1680" height="178" rx="16" fill="#153e43" stroke="#153e43"/>
+<text x="84" y="1135" class="label" style="fill:#8ed9c6">PROVENANCE AND INTEGRITY THROUGHOUT</text>
+<text x="84" y="1178" class="head white">Trace decisions</text>
+<text x="84" y="1212" class="small light">Sources · inclusion / exclusion · route rationale</text>
+<text x="84" y="1242" class="small light">Configuration snapshot · commands · parameters</text>
+<text x="643" y="1178" class="head white">Protect execution</text>
+<text x="643" y="1212" class="small light">Immutable plans · staged inputs · versions / seeds</text>
+<text x="643" y="1242" class="small light">Locks · checksums · resume / invalidation</text>
+<text x="1202" y="1178" class="head white">Enable reuse</text>
+<text x="1202" y="1212" class="small light">Reports · evidence · logs · provenance</text>
+<text x="1202" y="1242" class="small light">SHA-256 manifest · RO-Crate metadata</text>
+<rect x="60" y="1297" width="1680" height="87" rx="16" fill="#f9f5e9" stroke="#d8cba4" stroke-dasharray="7 5"/>
+<text x="82" y="1327" class="label">CAPABILITY BOUNDARIES</text>
+<text x="375" y="1327" class="small">RAxML-NG / ParGenes: commands · ASTRAL / BUCKy: guidance · existing gene-tree input: route selection only</text>
+<text x="82" y="1362" class="label">FUTURE AUTOMATION</text>
+<text x="375" y="1362" class="small">Genome retrieval, reads, ortholog inference, BUSCO, species trees, and full reticulation analysis.</text>
+<text x="60" y="1419" class="small">FAIR: Findable, Accessible, Interoperable, Reusable. Local packaging supports reuse; deposition and biological validation are separate steps.</text>
+</svg>

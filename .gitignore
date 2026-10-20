@@ -34,3 +34,10 @@ results/
 # Local/private working documents are not part of the public software record.
 *.docx
 rp-paper/
+
+# Publish the v1 and v2 PNG/SVG figures; keep other drafts local.
+/docs/figures/*
+!/docs/figures/fair-phyloflow-overview-v1.png
+!/docs/figures/fair-phyloflow-overview-v1.svg
+!/docs/figures/fair-phyloflow-overview-v2.png
+!/docs/figures/fair-phyloflow-overview-v2.svg
