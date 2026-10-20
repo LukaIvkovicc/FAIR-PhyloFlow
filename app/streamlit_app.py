@@ -9,7 +9,7 @@ st.title("FAIR PhyloFlow")
 st.caption("Configuration-driven, decision-aware phylogenomics")
 
 st.write(
-    "Welcome ! The CLI output reports the project-specific location of each generated artifact."
+    "Welcome! The CLI output reports the project-specific location of each generated artifact. You can click on the links to open them in a new tab."
 )
 
 config_path = st.text_input("Path to project.yaml", value="examples/demo_project/project.yaml")
