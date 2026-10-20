@@ -71,6 +71,16 @@ implemented.
 
 ## Pull Request Expectations
 
+CI runs tests on Python 3.11–3.14, including Streamlit button and error handling
+tests. Install `.[dev,ui]` to run that complete suite locally. It also checks
+lint, formatting, types, distribution installation, the real IQ-TREE 2 route,
+and container startup through the image's health check.
+
+Dependabot checks Python, GitHub Actions, Docker, and Conda dependencies monthly.
+IQ-TREE major updates need a deliberate execution-contract review; the Conda
+updater does not propose those automatically. Review dependency pull requests
+and their CI results before merging.
+
 A pull request should explain:
 
 - the user or research problem;

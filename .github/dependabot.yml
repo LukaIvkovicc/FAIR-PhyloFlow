@@ -16,3 +16,11 @@ updates:
     directory: /
     schedule:
       interval: monthly
+  - package-ecosystem: conda
+    directory: /
+    schedule:
+      interval: monthly
+    # The execution contract currently supports IQ-TREE 2 only.
+    ignore:
+      - dependency-name: iqtree
+        update-types: ["version-update:semver-major"]

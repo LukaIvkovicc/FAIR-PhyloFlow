@@ -29,7 +29,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: pip
       - name: Install package
-        run: python -m pip install -e ".[dev]"
+        run: python -m pip install -e ".[dev,ui]"
       - name: Run tests
         run: python -m pytest --cov=fair_phyloflow --cov-branch --cov-report=term-missing --cov-report=xml
       - name: Upload coverage artifact
@@ -78,9 +78,35 @@ jobs:
         with:
           context: .
           push: false
+          load: true
           tags: fair-phyloflow:test
           cache-from: type=gha
           cache-to: type=gha,mode=max
+      - name: Verify container startup and health
+        run: |
+          docker run --detach --name fair-phyloflow-ci --health-interval=2s --health-start-period=5s --health-retries=15 fair-phyloflow:test
+          python - <<'PY'
+          import subprocess
+          import time
+
+          for _ in range(30):
+              status = subprocess.check_output(
+                  ["docker", "inspect", "--format", "{{.State.Health.Status}}", "fair-phyloflow-ci"],
+                  text=True,
+              ).strip()
+              if status == "healthy":
+                  break
+              if status == "unhealthy":
+                  raise SystemExit("Container health check failed")
+              time.sleep(2)
+          else:
+              raise SystemExit("Container did not become healthy within 60 seconds")
+          PY
+      - name: Show container logs and clean up
+        if: always()
+        run: |
+          docker logs fair-phyloflow-ci || true
+          docker rm --force fair-phyloflow-ci || true
 
   iqtree-contract:
     name: Real IQ-TREE 2 contract
