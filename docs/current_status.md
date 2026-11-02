@@ -151,11 +151,11 @@ execution/parsing, ASTRAL execution/parsing, or biological species delimitation
 decisions.
 
 Those are future workflow layers. The current milestone is a transparent,
-testable workflow engine with one complete prepared-alignment execution route.
+testable workflow system with one complete prepared-alignment execution route.
 
 ## Next Move
 
-Verify the executable route against the pinned real IQ-TREE 2 environment in
-GitHub Actions, then validate it with genuine curated biological inputs when
-those data are ready. Biological validation remains distinct from the
-synthetic software-contract fixtures.
+Verifying the executable route against the pinned real IQ-TREE 2 environment in
+GitHub Actions, then validating it with genuine curated biological inputs when
+those data are ready. Biological validation remains distinctive from the
+synthetic software-contract data.
